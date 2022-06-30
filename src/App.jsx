@@ -16,20 +16,19 @@ function App() {
   return (
     <RecipesProvider>
       <Routes>
-        <Route exact path="/" element={ <Login /> } />
-        <Route exact path="/foods" element={ <Foods /> } />
-        <Route exact path="/drinks" element={ <Drinks /> } />
-        <Route exact path="/profile" element={ <Profile /> } />
-        <Route exact path="/foods/:id" element={ <Recipe /> } />
-        <Route exact path="/drinks/:id" element={ <Recipe /> } />
-        <Route path="/foods/:id/in-progress" element={ <InProgress /> } />
-        <Route path="/drinks/:id/in-progress" element={ <InProgress /> } />
-        <Route path="/done-recipes" element={ <DoneRecipes /> } />
-        <Route exact path="/explore" element={ <Explore /> } />
-        <Route exact path="/favorite-recipes" element={ <FavoriteRecipes /> } />
+        <Route exact path="/" element={<Login />} />
+        <Route exact path="/foods" element={<Foods />} />
+        <Route exact path="/drinks" element={<Drinks />} />
+        <Route exact path="/foods/:id" element={<Recipe />} />
+        <Route exact path="/drinks/:id" element={<Recipe />} />
+        <Route path="/foods/:id/in-progress" element={<InProgress />} />
+        <Route path="/drinks/:id/in-progress" element={<InProgress />} />
+        <Route exact path="/done-recipes" element={<DoneRecipes />} />
+        <Route exact path="/favorite-recipes" element={<FavoriteRecipes />} />
+        <Route exact path="/profile" element={<Profile />} />
+        <Route exact path="/explore" element={<Explore />} />
       </Routes>
     </RecipesProvider>
-
   );
 }
 

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import FavoriteBtn from '../../components/FavoriteBtn';
 import ShareBtn from '../../components/ShareBtn';
 import './styles.scss';
 
-function InProgress({ match: { params: { id } } }) {
+function InProgress() {
+  const { id } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
   const [recipe, setRecipe] = useState([]);
@@ -31,6 +32,7 @@ function InProgress({ match: { params: { id } } }) {
           `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`,
         );
       }
+      console.log(apiData)
       const apiRecipe = await apiData.json();
       const param = location.pathname.includes('foods') ? 'meals' : 'drinks';
       setRecipe(...apiRecipe[param]);

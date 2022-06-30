@@ -4,6 +4,7 @@ import RecipeCard from '../../components/RecipeCard';
 import Footer from '../../components/Footer';
 import { RecipesContext } from '../../context/RecipesContext';
 import { drinkApi } from '../../services/foodAndDrinkApi';
+import { useLocation, useParams } from 'react-router-dom';
 
 function Drinks() {
   const { setSearchResults } = useContext(RecipesContext);
