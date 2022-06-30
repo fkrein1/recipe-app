@@ -3,15 +3,11 @@
   position: fixed;
   display: flex;
   justify-content: space-around;
-  width: min(100vw, 450px);
+  width: min(100vw, 400px);
+  height: 75px;
   background-color: white;
   padding: 10px 20px;
   border-radius: 5px;
-  overflow: none;
-  border: rgb(192, 192, 192) 1px solid;
-  border-top: none;
-  border-left: none;
-
 
   button {
     border: none;

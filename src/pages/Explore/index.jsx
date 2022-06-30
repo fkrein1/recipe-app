@@ -7,8 +7,8 @@ export default function ExploreFoodsIngredients() {
   return (
     <>
       <Header title="Explore" />
-      <IngredientsCards param="thecocktaildb" />
       <IngredientsCards param="themealdb" />
+      <IngredientsCards param="thecocktaildb" />
       <Footer />
     </>
   );

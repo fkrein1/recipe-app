@@ -16,8 +16,9 @@ function FavoriteBtn({ recipe }) {
 
   function deleteFavorite() {
     const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+
     const newFavorites = favoriteRecipes
-      .filter((favRecipe) => favRecipe.id !== recipe?.idDrink || recipe?.idMeal);
+      .filter((favRecipe) => favRecipe.id !== recipe.idMeal && favRecipe.id !== recipe.idDrink )
     localStorage.setItem('favoriteRecipes', JSON.stringify(newFavorites));
     setFavorite(false);
   }

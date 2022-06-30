@@ -8,7 +8,7 @@ function IngredientsCards({ param }) {
   const [ingredients, setIngredients] = useState([]);
   const location = useLocation();
   const { setFilteredResults } = useContext(RecipesContext);
-  const maxIngredient = 12;
+  const maxIngredient = 9;
   useEffect(() => {
     async function fetchIngredient() {
       const response = await fetch(`https://www.${param}.com/api/json/v1/1/list.php?i=list`);

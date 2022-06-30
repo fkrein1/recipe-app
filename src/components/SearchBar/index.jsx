@@ -1,90 +1,55 @@
 import React, { useContext, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { MagnifyingGlass, X } from 'phosphor-react';
 import { foodApi, drinkApi } from '../../services/foodAndDrinkApi';
 import { RecipesContext } from '../../context/RecipesContext';
 import './styles.scss';
 
 function SearchBar() {
-  const [searchParam, setSearchParam] = useState('');
   const [searchValue, setSearchValue] = useState('');
   const { setSearchResults } = useContext(RecipesContext);
-  const navigate = useNavigate();
   const location = useLocation();
 
-  const searchApi = async () => {
+  const handleSearchApi = async () => {
+    event.preventDefault();
     if (location.pathname === '/foods') {
-      const apiResult = await foodApi(searchParam, searchValue);
+      const apiResult = await foodApi('s', searchValue);
       if (!apiResult) {
-        global.alert('Sorry, we haven\'t found any recipes for these filters.');
+        alert("Sorry, we haven't found any recipes for these filters.");
         setSearchResults([]);
-      } else if (apiResult.length === 1) {
-        setSearchResults(apiResult);
-        navigate(`/foods/${apiResult[0].idMeal}`);
       } else {
         setSearchResults(apiResult);
       }
     } else {
-      const apiResult = await drinkApi(searchParam, searchValue);
+      const apiResult = await drinkApi('s', searchValue);
       if (!apiResult) {
-        global.alert('Sorry, we haven\'t found any recipes for these filters.');
+        alert("Sorry, we haven't found any recipes for these filters.");
         setSearchResults([]);
-      } else if (apiResult.length === 1) {
-        setSearchResults(apiResult);
-        navigate(`/drinks/${apiResult[0].idDrink}`);
       } else {
         setSearchResults(apiResult);
       }
     }
-  };
-
-  const handleClick = () => {
-    if (searchParam === 'f' && searchValue.length > 1) {
-      return global.alert('Your search must have only 1 (one) character');
-    }
-    searchApi();
+    setSearchValue('');
   };
 
   return (
-    <section id="search-bar">
+    <form id="search-bar" onSubmit={(event) => handleSearchApi(event)}>
       <input
         type="text"
-        placeholder="Search"
-        value={ searchValue }
-        onChange={ ({ target }) => setSearchValue(target.value) }
+        placeholder="Search recipes"
+        value={searchValue}
+        onChange={({ target }) => setSearchValue(target.value)}
       />
-      <div onChange={ ({ target }) => setSearchParam(target.value) } id="search-radio">
-        <label htmlFor="ingredient-search">
-          <input
-            type="radio"
-            name="searchParam"
-            id="ingredient-search"
-            value="i"
-          />
-          Ingredient
-        </label>
-        <label htmlFor="name-search">
-          <input
-            type="radio"
-            name="searchParam"
-            id="name-search"
-            value="s"
-          />
-          Name
-        </label>
-        <label htmlFor="letter-search">
-          <input
-            type="radio"
-            name="searchParam"
-            id="letter-search"
-            value="f"
-          />
-          First Letter
-        </label>
-      </div>
-      <button type="button" onClick={ handleClick }>
-        Search
-      </button>
-    </section>
+      <MagnifyingGlass size={22} color="gray" id="search-icon" />
+      {searchValue.length > 0 && (
+        <X
+          size={22}
+          color="gray"
+          id="x-icon"
+          onClick={() => setSearchValue('')}
+        />
+      )}
+    </form>
   );
 }
 

@@ -1,34 +1,9 @@
 #header {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-items: center;
-  flex-direction: column;
   gap: 5px;
-  background: white;
   border-radius: 5px;
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
-    align-items: center;
-    align-items: center;
-    width: 100%;
-  
-    button {
-      border: none;
-      background: none;
-    }
-  
-    h1 {
-      text-align: center;
-      margin-inline: 10px;
-    }
-  
-    p {
-      color: white;
-    }
-
-  }
+  font-size: 14px;
+  margin-inline: 15px;
+  line-height: 21px;
+  margin-top: 15px;
 } 

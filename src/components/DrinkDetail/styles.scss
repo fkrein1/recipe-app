@@ -1,17 +1,16 @@
 #drink-detail-page {
   display: flex;
-  width: min(100vw, 450px);
+  width: min(100vw, 400px);
   align-items: center;
   flex-direction: column;
   word-break: break-all;
 
   #image-container {
-    width: min(100vw, 450px);
+    width: min(100vw, 400px);
     position: relative;
 
     .main-image {
-      width: min(100vw, 450px);
-      border-radius: 10px;
+      width: min(100vw, 400px);
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
   
@@ -47,7 +46,7 @@
   }
 
   iframe {
-    width: min(100vw, 450px);
+    width: min(100vw, 400px);
   }
 
   #start-btn {
@@ -55,12 +54,11 @@
     bottom: 0;
     background: rgba(122, 122, 199, 1);
     color: rgba(255, 255, 255, 1);
-    width: min(100vw, 450px);
+    width: min(100vw, 400px);
     text-transform: uppercase;
     font-weight: 700;
     padding: 20px 10px;
     border: 0;
-    border-radius: 10px;
     margin-top: 30px;
     font-size: 18px;
     z-index: 5;

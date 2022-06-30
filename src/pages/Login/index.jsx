@@ -19,7 +19,7 @@ function Login() {
   }
 
   return (
-    <main id="login">
+    <div id="login-wrapper">
       <div id="logo">
         <img src={ logo } alt="logo" />
         <h1>Recipe App</h1>
@@ -48,7 +48,7 @@ function Login() {
       >
         Login
       </button>
-    </main>
+    </div>
 
   );
 }

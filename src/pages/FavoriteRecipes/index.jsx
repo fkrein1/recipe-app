@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 import UnfavoriteBtn from '../../components/UnfavoriteBtn';
 import './styles.scss';
 
@@ -15,36 +16,35 @@ function FavoriteRecipes() {
     setRecipesFilter(JSON.parse(localStorage.getItem('favoriteRecipes')));
   }, [reload]);
 
-
   return (
-    <div id="favorite-recipes">
+    <>
+      <Header title="Favorites" />
       <main>
-        {recipesFilter && recipesFilter
-          .map((recipe, index) => (
-            <div key={ index }>
-              <Link to={ `/${recipe.type}s/${recipe.id}` }>
-                <img
-                  src={ recipe.image }
-                  alt={ recipe.name }
-                />
+        {recipesFilter &&
+          recipesFilter.map((recipe, index) => (
+            <div key={index}>
+              <Link to={`/${recipe.type}s/${recipe.id}`}>
+                <img src={recipe.image} alt={recipe.name} />
               </Link>
-              <Link to={ `/${recipe.type}s/${recipe.id}` }>
+              <Link to={`/${recipe.type}s/${recipe.id}`}>
                 <p>{recipe.name}</p>
               </Link>
-              { recipe.alcoholicOrNot.length !== 0 && (
+              {recipe.alcoholicOrNot.length !== 0 && (
                 <p>
                   alcoholic or not:
                   {recipe.alcoholicOrNot}
-                </p>)}
+                </p>
+              )}
               <p>
                 {recipe.nationality !== '' && `${recipe.nationality} - `}
                 {recipe.category}
               </p>
-              <UnfavoriteBtn id={ recipe.id } reload={ setReload } index={ index } />
+              <UnfavoriteBtn id={recipe.id} reload={setReload} index={index} />
             </div>
           ))}
       </main>
-    </div>
+      <Footer />
+    </>
   );
 }
 

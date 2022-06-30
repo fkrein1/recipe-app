@@ -10,6 +10,7 @@ function InProgress() {
   const navigate = useNavigate();
   const [recipe, setRecipe] = useState([]);
   const [progress, setProgress] = useState([]);
+  const [recipeDone, setRecipeDone] = useState(false);
 
   const ingredients = Object.keys(recipe).filter((key) => key.includes('strIngredient'));
 
@@ -18,6 +19,17 @@ function InProgress() {
     if (localStorage.getItem('inProgressRecipes')) {
       setProgress(JSON.parse(localStorage.getItem('inProgressRecipes'))[param][id]);
     }
+  }, []);
+
+  useEffect(() => {
+    function checkDoneRecipe() {
+      if (localStorage.getItem('doneRecipes')) {
+        const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+        const isRecipeDone = doneRecipes.some(recipe => recipe.id === id);
+        setRecipeDone(isRecipeDone);
+      } 
+    }
+    checkDoneRecipe();
   }, []);
 
   useEffect(() => {
@@ -173,14 +185,16 @@ function InProgress() {
         </div>)))}
       <h3>Recipe</h3>
       <p id="instructions">{recipe.strInstructions}</p>
-      <button
-        id="finish-btn"
-        type="button"
-        disabled={ checkIgredients() }
-        onClick={ handleFinishRecipeBtn }
-      >
-        Finish recipe!
-      </button>
+      {!recipeDone && (
+        <button
+          id="finish-btn"
+          type="button"
+          disabled={ checkIgredients() }
+          onClick={ handleFinishRecipeBtn }
+        >
+          Finish recipe!
+        </button>
+      )}
     </div>
   );
 }

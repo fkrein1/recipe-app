@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { RecipesContext } from '../../context/RecipesContext';
 import './styles.scss';
 
-function RecipeCard() {
+function RecipeGrid() {
   const { searchResults, filteredResults } = useContext(RecipesContext);
   const location = useLocation();
   let filteredRecipes = [];
@@ -37,4 +37,4 @@ function RecipeCard() {
   );
 }
 
-export default RecipeCard;
+export default RecipeGrid;
