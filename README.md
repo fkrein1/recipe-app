@@ -6,7 +6,6 @@ A React application to find food and drink recipes. The main functionalities are
 - Search by ingredient;
 - Finished and in-progress recipes
 <br>
-<br>
 Built with React, Vite and Sass.
 <br>
 <br>
