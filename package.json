@@ -2,6 +2,8 @@
   "name": "recipe-app",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://recipe-app-flame.vercel.app/",
+
   "scripts": {
     "dev": "vite",
     "build": "vite build",
