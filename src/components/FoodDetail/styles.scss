@@ -3,7 +3,6 @@
   width: min(100vw, 420px);
   align-items: center;
   flex-direction: column;
-  word-break: break-all;
 
   #image-container {
     width: min(100vw, 420px);
@@ -36,7 +35,7 @@
   h1 {
     text-align: center;
     text-transform: uppercase;
-    margin-block: 30px;
+    margin: 50px 10px 30px 10px;
   }
 
   h3,

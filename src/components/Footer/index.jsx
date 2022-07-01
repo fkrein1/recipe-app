@@ -33,7 +33,11 @@ function Footer() {
         onClick={handleFoodClick}
         className={foods ? 'active' : ''}
       >
-        <CookingPot size={28} weight={foods ? 'fill' : 'regular'} />
+        <CookingPot
+          size={28}
+          weight={foods ? 'fill' : 'regular'}
+          color={foods ? '#7A7AC7' : 'black'}
+        />
         <p>Foods</p>
       </button>
       <button
@@ -41,7 +45,11 @@ function Footer() {
         onClick={handleDrinkClick}
         className={drinks ? 'active' : ''}
       >
-        <Martini size={28} weight={drinks ? 'fill' : 'regular'} />
+        <Martini
+          size={28}
+          weight={drinks ? 'fill' : 'regular'}
+          color={drinks ? '#7A7AC7' : 'black'}
+        />
         <p>Drinks</p>
       </button>
       <button
@@ -49,7 +57,11 @@ function Footer() {
         onClick={() => navigate('/ingredients')}
         className={ingredients ? 'active' : ''}
       >
-        <EggCrack size={28} weight={ingredients ? 'fill' : 'regular'} />
+        <EggCrack
+          size={28}
+          weight={ingredients ? 'fill' : 'regular'}
+          color={ingredients ? '#7A7AC7' : 'black'}
+        />
         <p>Ingredients</p>
       </button>
 
@@ -58,7 +70,11 @@ function Footer() {
         onClick={() => navigate('/favorite')}
         className={favorite ? 'active' : ''}
       >
-        <Heart size={28} weight={favorite ? 'fill' : 'regular'} />
+        <Heart
+          size={28}
+          weight={favorite ? 'fill' : 'regular'}
+          color={favorite ? '#7A7AC7' : 'black'}
+        />
         <p>Favorite</p>
       </button>
 
@@ -67,7 +83,11 @@ function Footer() {
         onClick={() => navigate('/finished')}
         className={finished ? 'active' : ''}
       >
-        <Checks size={28} weight={finished ? 'fill' : 'regular'} />
+        <Checks
+          size={28}
+          weight={finished ? 'fill' : 'regular'}
+          color={finished ? '#7A7AC7' : 'black'}
+        />
         <p>Finished</p>
       </button>
     </footer>
