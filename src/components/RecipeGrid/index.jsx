@@ -7,7 +7,7 @@ function RecipeGrid() {
   const { searchResults, filteredResults } = useContext(RecipesContext);
   const location = useLocation();
   let filteredRecipes = [];
-  const maxRecipes = 12;
+  const maxRecipes = 24;
   if (filteredResults && filteredResults.length > 0) {
     filteredRecipes = filteredResults.slice(0, maxRecipes);
   } else if (searchResults.length > 0) {

@@ -28,22 +28,14 @@ function Login() {
         className="input"
         id="email"
         type="text"
-        placeholder="Email"
+        placeholder="Insert your mail"
         value={ email }
         onChange={ (e) => setEmail(e.target.value) }
-      />
-      <input
-        className="input"
-        id="password"
-        type="password"
-        placeholder="Password"
-        value={ password }
-        onChange={ (e) => setPassword(e.target.value) }
       />
       <button
         type="button"
         id="loginBtn"
-        disabled={ !(password.length > minPassword && regex.test(email)) }
+        disabled={ !(regex.test(email)) }
         onClick={ btnSubmit }
       >
         Login
