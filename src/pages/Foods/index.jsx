@@ -4,7 +4,7 @@ import RecipeGrid from '../../components/RecipeGrid';
 import Footer from '../../components/Footer';
 import { RecipesContext } from '../../context/RecipesContext';
 import { foodApi } from '../../services/foodAndDrinkApi';
-import SearchBar from '../../components/SearchBar';
+import SearchRecipe from '../../components/SearchRecipe';
 import './styles.scss';
 
 function Foods() {
@@ -20,7 +20,7 @@ function Foods() {
   return (
     <div id="food-wrapper">
       <Header title="Foods" />
-      <SearchBar />
+      <SearchRecipe />
       <RecipeGrid />
       <Footer />
     </div>

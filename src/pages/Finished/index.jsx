@@ -17,16 +17,12 @@ function Finished() {
       <Header title="Finished" />
       <main id="done-recipes-grid">
         {recipesFilted &&
-          recipesFilted.map((recipe, index) => (
-            <div key={index} className="done-recipes-card">
-              <Link to={`/${recipe.type}s/${recipe.id}`}>
-                <img src={recipe.image} alt={recipe.name} />
-              </Link>
-              <Link to={`/${recipe.type}s/${recipe.id}`}>
-                <h3>{recipe.name}</h3>
-              </Link>
+          recipesFilted.map((recipe) => (
+            <Link to={`/${recipe.type}s/${recipe.id}`} key={recipe.id}>
+              <img src={recipe.image} alt={recipe.name} />
+              <h3>{recipe.name}</h3>
               <p>{recipe.category}</p>
-            </div>
+            </Link>
           ))}
       </main>
       <Footer />

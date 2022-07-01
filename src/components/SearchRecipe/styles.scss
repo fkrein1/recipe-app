@@ -1,0 +1,31 @@
+#search-bar {
+  border-radius: 4px;
+  font-size: 16px;
+  margin-inline: 15px;
+  margin-top: 20px;
+  gap: 5px;
+  position: relative;
+
+  input {
+    border-radius: 4px;
+    width: 100%;
+    font-size: 16px;
+    padding: 10px 50px 10px 40px;
+    border: 0.5px gray solid;
+    &:focus {
+      outline: rgba(122, 122, 199, 1) 2px solid;
+    }
+  }
+
+  #search-icon {
+    position: relative;
+    bottom: 32px;
+    left: 10px;
+  }
+
+  #x-icon {
+    position: relative;
+    bottom: 31px;
+    left: min(330px, calc(83vw - 35px));
+  }
+}

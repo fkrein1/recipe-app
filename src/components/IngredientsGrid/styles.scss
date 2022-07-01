@@ -1,30 +1,37 @@
 #ingredient-grid {
   display: flex;
   flex-wrap: wrap;
-  flex: auto;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 100px;
+  margin-inline: 15px;
+  max-width: min(420px, 100vw);
   margin-top: 20px;
 
   a {
     text-decoration: none;
-    color: black;
-  }
-
-  .ingredient-card {
     text-align: center;
-    width: 120px;
-    background: #ffffff;
-    box-shadow: 0px 4px 12px rgba(90, 90, 90, 0.17);
-    border-radius: 20px;
+    color: black;
+    display: flex;
+    flex: 1;
+    max-width: 125px;
+    width: 30%;
+    flex-direction: column;
+    background: white;
+    border-radius: 5px;
+
+    img {
+      border-radius: 5px;
+      max-height: 125px;
+      max-width: 125px;
+    }
 
     h3 {
       font-weight: 600;
-      font-size: 16px;
+      font-size: 14px;
       line-height: 20px;
       text-transform: uppercase;
-      padding-block: 15px;
+      margin-top: 3px;
     }
   }
 }

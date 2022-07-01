@@ -3,18 +3,17 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 10px;
-  
   margin-bottom: 100px;
   margin-inline: 15px;
-  max-width: min(400px, 100vw);
-  
+  max-width: min(420px, 100vw);
+
   a {
     text-decoration: none;
     text-align: center;
     color: black;
     display: flex;
     flex: 1;
-    max-width: 120px;
+    max-width: 125px;
     width: 30%;
     flex-direction: column;
     background: white;
@@ -22,8 +21,8 @@
 
     img {
       border-radius: 5px;
-      max-height: 120px;
-      max-width: 120px;
+      max-height: 125px;
+      max-width: 125px;
     }
 
     h3 {
@@ -33,7 +32,7 @@
       text-transform: uppercase;
       margin-top: 3px;
     }
-    
+
     p {
       font-size: 14px;
       margin-bottom: 5px;

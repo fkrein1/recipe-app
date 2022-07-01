@@ -1,7 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { RecipesProvider } from './context/RecipesContext';
-
 import Foods from './pages/Foods';
 import Drinks from './pages/Drinks';
 import Recipe from './pages/Recipe';

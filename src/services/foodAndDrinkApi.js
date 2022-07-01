@@ -1,6 +1,7 @@
 export const foodApi = async (param, value) => {
   let url = `https://www.themealdb.com/api/json/v1/1/search.php?${param}=${value}`;
-  if (param === 'i') url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${value}`;
+  if (param === 'i')
+    url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${value}`;
 
   const response = await fetch(url);
   const data = await response.json();
@@ -10,7 +11,8 @@ export const foodApi = async (param, value) => {
 
 export const drinkApi = async (param, value) => {
   let url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?${param}=${value}`;
-  if (param === 'i') url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${value}`;
+  if (param === 'i')
+    url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${value}`;
 
   const response = await fetch(url);
   const data = await response.json();

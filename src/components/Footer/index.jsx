@@ -1,20 +1,13 @@
 import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import {
-  Compass,
-  Martini,
-  CookingPot,
-  User,
-  EggCrack,
-  Checks,
-  Heart,
-} from 'phosphor-react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Martini, CookingPot, EggCrack, Checks, Heart } from 'phosphor-react';
 import './styles.scss';
 import { RecipesContext } from '../../context/RecipesContext';
 
 function Footer() {
   const { setFilter } = useContext(RecipesContext);
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   function handleFoodClick() {
     setFilter('');
@@ -26,28 +19,55 @@ function Footer() {
     navigate('/drinks');
   }
 
+  const foods = pathname.includes('/foods') || pathname === '/';
+  const drinks = pathname.includes('/drinks');
+  const ingredients = pathname.includes('/ingredients');
+  const favorite = pathname.includes('/favorite');
+  const finished = pathname.includes('/finished');
+  console.log();
+
   return (
     <footer id="footer">
-      <button type="button" onClick={handleFoodClick}>
-        <CookingPot size={32} />
-        <p>Food</p>
+      <button
+        type="button"
+        onClick={handleFoodClick}
+        className={foods ? 'active' : ''}
+      >
+        <CookingPot size={28} weight={foods ? 'fill' : 'regular'} />
+        <p>Foods</p>
       </button>
-      <button type="button" onClick={handleDrinkClick}>
-        <Martini size={32} />
-        <p>Drink</p>
+      <button
+        type="button"
+        onClick={handleDrinkClick}
+        className={drinks ? 'active' : ''}
+      >
+        <Martini size={28} weight={drinks ? 'fill' : 'regular'} />
+        <p>Drinks</p>
       </button>
-      <button type="button" onClick={() => navigate('/ingredients')}>
-        <EggCrack size={32} />
-        <p>Ingredient</p>
+      <button
+        type="button"
+        onClick={() => navigate('/ingredients')}
+        className={ingredients ? 'active' : ''}
+      >
+        <EggCrack size={28} weight={ingredients ? 'fill' : 'regular'} />
+        <p>Ingredients</p>
       </button>
 
-      <button type="button" onClick={() => navigate('/favorite')}>
-        <Heart size={32} />
+      <button
+        type="button"
+        onClick={() => navigate('/favorite')}
+        className={favorite ? 'active' : ''}
+      >
+        <Heart size={28} weight={favorite ? 'fill' : 'regular'} />
         <p>Favorite</p>
       </button>
 
-      <button type="button" onClick={() => navigate('/finished')}>
-        <Checks size={32} />
+      <button
+        type="button"
+        onClick={() => navigate('/finished')}
+        className={finished ? 'active' : ''}
+      >
+        <Checks size={28} weight={finished ? 'fill' : 'regular'} />
         <p>Finished</p>
       </button>
     </footer>

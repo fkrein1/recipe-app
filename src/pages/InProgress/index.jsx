@@ -12,12 +12,16 @@ function InProgress() {
   const [progress, setProgress] = useState([]);
   const [recipeDone, setRecipeDone] = useState(false);
 
-  const ingredients = Object.keys(recipe).filter((key) => key.includes('strIngredient'));
+  const ingredients = Object.keys(recipe).filter((key) =>
+    key.includes('strIngredient'),
+  );
 
   useEffect(() => {
     const param = location.pathname.includes('foods') ? 'meals' : 'cocktails';
     if (localStorage.getItem('inProgressRecipes')) {
-      setProgress(JSON.parse(localStorage.getItem('inProgressRecipes'))[param][id]);
+      setProgress(
+        JSON.parse(localStorage.getItem('inProgressRecipes'))[param][id],
+      );
     }
   }, []);
 
@@ -25,9 +29,9 @@ function InProgress() {
     function checkDoneRecipe() {
       if (localStorage.getItem('doneRecipes')) {
         const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
-        const isRecipeDone = doneRecipes.some(recipe => recipe.id === id);
+        const isRecipeDone = doneRecipes.some((recipe) => recipe.id === id);
         setRecipeDone(isRecipeDone);
-      } 
+      }
     }
     checkDoneRecipe();
   }, []);
@@ -44,7 +48,7 @@ function InProgress() {
           `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`,
         );
       }
-      console.log(apiData)
+      console.log(apiData);
       const apiRecipe = await apiData.json();
       const param = location.pathname.includes('foods') ? 'meals' : 'drinks';
       setRecipe(...apiRecipe[param]);
@@ -56,7 +60,9 @@ function InProgress() {
     const progressArr = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (Object.keys(progressArr.meals).includes(id)) {
       if (progressArr.meals[id].includes(ingredient)) {
-        setProgress(JSON.parse(localStorage.getItem('inProgressRecipes')).meals[id]);
+        setProgress(
+          JSON.parse(localStorage.getItem('inProgressRecipes')).meals[id],
+        );
       } else {
         progressArr.meals[id] = [...progressArr.meals[id], ingredient];
       }
@@ -68,14 +74,18 @@ function InProgress() {
     }
 
     localStorage.setItem('inProgressRecipes', JSON.stringify(progressArr));
-    setProgress(JSON.parse(localStorage.getItem('inProgressRecipes')).meals[id]);
+    setProgress(
+      JSON.parse(localStorage.getItem('inProgressRecipes')).meals[id],
+    );
   };
 
   const drinkId = (ingredient) => {
     const progressArr = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (Object.keys(progressArr.cocktails).includes(id)) {
       if (progressArr.cocktails[id].includes(ingredient)) {
-        setProgress(JSON.parse(localStorage.getItem('inProgressRecipes')).cocktails[id]);
+        setProgress(
+          JSON.parse(localStorage.getItem('inProgressRecipes')).cocktails[id],
+        );
       } else {
         progressArr.cocktails[id] = [...progressArr.cocktails[id], ingredient];
       }
@@ -87,7 +97,9 @@ function InProgress() {
     }
 
     localStorage.setItem('inProgressRecipes', JSON.stringify(progressArr));
-    setProgress(JSON.parse(localStorage.getItem('inProgressRecipes')).cocktails[id]);
+    setProgress(
+      JSON.parse(localStorage.getItem('inProgressRecipes')).cocktails[id],
+    );
   };
 
   const saveIngredient = (ingredient) => {
@@ -120,9 +132,12 @@ function InProgress() {
       const filteredIgredients = ingredients
         .filter((ingredient) => recipe[ingredient] !== '')
         .filter((ingredient) => recipe[ingredient] !== null);
-      progress.sort((a, b) => Number(a
-        .slice(maxCharacters)) - Number(b.slice(maxCharacters)));
-      const equals = JSON.stringify(progress) === JSON.stringify(filteredIgredients);
+      progress.sort(
+        (a, b) =>
+          Number(a.slice(maxCharacters)) - Number(b.slice(maxCharacters)),
+      );
+      const equals =
+        JSON.stringify(progress) === JSON.stringify(filteredIgredients);
       return !equals;
     }
     return true;
@@ -152,45 +167,50 @@ function InProgress() {
       localStorage.setItem('doneRecipes', JSON.stringify([doneRecipe]));
     } else {
       const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
-      localStorage.setItem('doneRecipes', JSON.stringify([...doneRecipes, doneRecipe]));
+      localStorage.setItem(
+        'doneRecipes',
+        JSON.stringify([...doneRecipes, doneRecipe]),
+      );
     }
-    navigate('/done-recipes');
+    navigate('/finished');
   };
 
   return (
     <div id="in-progress">
       <div id="image-container">
         <img
-          src={ recipe.strMealThumb || recipe.strDrinkThumb }
-          alt={ recipe.strMeal || recipe.strDrink }
+          src={recipe.strMealThumb || recipe.strDrinkThumb}
+          alt={recipe.strMeal || recipe.strDrink}
         />
-        <FavoriteBtn recipe={ recipe } />
+        <FavoriteBtn recipe={recipe} />
         <ShareBtn />
       </div>
-      <h1>{ recipe.strMeal || recipe.strDrink}</h1>
+      <h1>{recipe.strMeal || recipe.strDrink}</h1>
       <h3>{recipe.strCategory}</h3>
-      {ingredients.map((ingredient, index) => (recipe[ingredient] && (
-        <div key={ index } className="recipe-inputs">
-          <label
-            htmlFor={ ingredient }
-          >
-            <input
-              type="checkbox"
-              id={ ingredient }
-              onChange={ () => saveIngredient(ingredient) }
-              checked={ checkboxChecked(ingredient) }
-            />
-            <span>{recipe[ingredient]}</span>
-          </label>
-        </div>)))}
+      {ingredients.map(
+        (ingredient, index) =>
+          recipe[ingredient] && (
+            <div key={index} className="recipe-inputs">
+              <label htmlFor={ingredient}>
+                <input
+                  type="checkbox"
+                  id={ingredient}
+                  onChange={() => saveIngredient(ingredient)}
+                  checked={checkboxChecked(ingredient)}
+                />
+                <span>{recipe[ingredient]}</span>
+              </label>
+            </div>
+          ),
+      )}
       <h3>Recipe</h3>
       <p id="instructions">{recipe.strInstructions}</p>
       {!recipeDone && (
         <button
           id="finish-btn"
           type="button"
-          disabled={ checkIgredients() }
-          onClick={ handleFinishRecipeBtn }
+          disabled={checkIgredients()}
+          onClick={handleFinishRecipeBtn}
         >
           Finish recipe!
         </button>

@@ -4,7 +4,7 @@ import './styles.scss';
 function Header({ title }) {
   return (
     <header id="header">
-    <h2>{title}</h2>
+      <h2>{title}</h2>
     </header>
   );
 }

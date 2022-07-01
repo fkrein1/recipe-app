@@ -5,7 +5,7 @@ import DrinkDetail from '../../components/DrinkDetail';
 import Recomendation from '../../components/Recomendation';
 
 function Recipe() {
-  const {pathname} = useLocation()
+  const { pathname } = useLocation();
   const isDrink = pathname.includes('drinks');
   const isFood = pathname.includes('foods');
   const { id } = useParams();

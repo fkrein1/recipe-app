@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { RecipesContext } from '../../context/RecipesContext';
+import SearchIngredient from '../SearchIngredient';
 import './styles.scss';
 
 function IngredientsGrid() {
   const [ingredients, setIngredients] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
   const { setFilter } = useContext(RecipesContext);
 
   useEffect(() => {
@@ -31,17 +33,22 @@ function IngredientsGrid() {
   }, []);
 
   const addFilter = (ingredient) => {
-    setFilter(ingredient)
-  }
+    setFilter(ingredient);
+  };
 
   return (
-    <div id="ingredient-grid">
-      { ingredients
+    <>
+      <SearchIngredient
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+      />
+      <div id="ingredient-grid">
+        {ingredients
           .sort()
+          .filter(ingredient => ingredient[0].toLowerCase().includes(searchValue.toLocaleLowerCase()))
           .map((ingredient, index) =>
           ingredient[1] === 'food' ? (
             <Link
-              className="ingredient-card"
               key={index}
               onClick={() => addFilter(ingredient[0])}
               to="/foods"
@@ -59,7 +66,6 @@ function IngredientsGrid() {
             </Link>
           ) : (
             <Link
-              className="ingredient-card"
               key={index}
               onClick={() => addFilter(ingredient[0])}
               to="/drinks"
@@ -77,7 +83,8 @@ function IngredientsGrid() {
             </Link>
           ),
         )}
-    </div>
+      </div>
+    </>
   );
 }
 

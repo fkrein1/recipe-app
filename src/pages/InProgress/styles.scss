@@ -1,15 +1,15 @@
 #in-progress {
   display: flex;
-  width: min(100vw, 400px);
+  width: min(100vw, 420px);
   align-items: flex-start;
   flex-direction: column;
 
   #image-container {
-    width: min(100vw, 400px);
+    width: min(100vw, 420px);
     position: relative;
 
     img {
-      width: min(100vw, 400px);
+      width: min(100vw, 420px);
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
 
@@ -63,7 +63,7 @@
     bottom: 0;
     background: rgba(122, 122, 199, 1);
     color: rgba(255, 255, 255, 1);
-    width: min(100vw, 400px);
+    width: min(100vw, 420px);
     text-transform: uppercase;
     font-weight: 700;
     padding: 20px 10px;

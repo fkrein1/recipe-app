@@ -5,7 +5,7 @@ import { foodApi, drinkApi } from '../../services/foodAndDrinkApi';
 import { RecipesContext } from '../../context/RecipesContext';
 import './styles.scss';
 
-function SearchBar() {
+function SearchRecipe() {
   const [searchValue, setSearchValue] = useState('');
   const { setSearchResults, setFilter } = useContext(RecipesContext);
   const location = useLocation();
@@ -54,4 +54,4 @@ function SearchBar() {
   );
 }
 
-export default SearchBar;
+export default SearchRecipe;

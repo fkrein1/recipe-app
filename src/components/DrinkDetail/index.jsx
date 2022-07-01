@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ShareButton from '../ShareBtn';
 import FavoriteBtn from '../FavoriteBtn';
+import BackArrow from '../BackArrow';
 import './styles.scss';
 
 function DrinkDetail({ id }) {
@@ -72,15 +73,14 @@ function DrinkDetail({ id }) {
             />
             {drinks.length > 0 && <FavoriteBtn recipe={drinks[0]} />}
             <ShareButton />
+            <BackArrow />
           </div>
 
           <h1>{drink.strDrink}</h1>
           <h3>{drink.strAlcoholic}</h3>
           <div>
             {ingredients.map((ingredient, index) => (
-              <p
-                key={ingredient}
-              >
+              <p key={ingredient}>
                 {`${index + 1} - ${ingredient} ${
                   mesures[index] ? mesures[index] : ''
                 }`}

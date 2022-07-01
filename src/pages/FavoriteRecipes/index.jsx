@@ -19,16 +19,12 @@ function Favorite() {
       <Header title="Favorites" />
       <main id="favorite-recipes-grid">
         {recipesFilter &&
-          recipesFilter.map((recipe, index) => (
-            <div key={index} className="favorite-recipes-card">
-              <Link to={`/${recipe.type}s/${recipe.id}`}>
-                <img src={recipe.image} alt={recipe.name} />
-              </Link>
-              <Link to={`/${recipe.type}s/${recipe.id}`}>
-                <h3>{recipe.name}</h3>
-                <p>{recipe.category}</p>
-              </Link>
-            </div>
+          recipesFilter.map((recipe) => (
+            <Link to={`/${recipe.type}s/${recipe.id}`} key={recipe.id}>
+              <img src={recipe.image} alt={recipe.name} />
+              <h3>{recipe.name}</h3>
+              <p>{recipe.category}</p>
+            </Link>
           ))}
       </main>
       <Footer />

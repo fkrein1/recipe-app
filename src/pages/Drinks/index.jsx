@@ -5,14 +5,14 @@ import Footer from '../../components/Footer';
 import { RecipesContext } from '../../context/RecipesContext';
 import { drinkApi } from '../../services/foodAndDrinkApi';
 import { useLocation, useParams } from 'react-router-dom';
-import SearchBar from '../../components/SearchBar';
+import SearchRecipe from '../../components/SearchRecipe';
 
 function Drinks() {
   const { setSearchResults, filter } = useContext(RecipesContext);
   useEffect(() => {
     async function fetchRecipes() {
-      if (filter === '') setSearchResults(await drinkApi('s', '')); 
-      else setSearchResults(await drinkApi('i', filter)); 
+      if (filter === '') setSearchResults(await drinkApi('s', ''));
+      else setSearchResults(await drinkApi('i', filter));
     }
     fetchRecipes();
   }, []);
@@ -20,7 +20,7 @@ function Drinks() {
   return (
     <div id="drinks-wrapper">
       <Header title="Drinks" />
-      <SearchBar />
+      <SearchRecipe />
       <RecipeGrid />
       <Footer />
     </div>

@@ -1,4 +1,4 @@
-#search-bar {
+#search-ingredient {
   border-radius: 4px;
   font-size: 16px;
   margin-inline: 15px;
@@ -26,8 +26,6 @@
   #x-icon {
     position: relative;
     bottom: 31px;
-    left: min(305px, calc(83vw - 35px))
+    left: min(330px, calc(83vw - 35px));
   }
-
-
 }

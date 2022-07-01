@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import ShareButton from '../ShareBtn';
 import FavoriteBtn from '../FavoriteBtn';
 import './styles.scss';
+import BackArrow from '../BackArrow';
 
 function FoodDetail({ id }) {
   const [foods, setFoods] = useState([]);
@@ -72,6 +73,7 @@ function FoodDetail({ id }) {
             />
             {foods.length > 0 && <FavoriteBtn recipe={foods[0]} />}
             <ShareButton />
+            <BackArrow />
           </div>
 
           <h1>{food.strMeal}</h1>
