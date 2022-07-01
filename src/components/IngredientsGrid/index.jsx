@@ -34,10 +34,6 @@ function IngredientsGrid() {
     setFilter(ingredient)
   }
 
-  const imageExists = (url) => {
-
-  }
-
   return (
     <div id="ingredient-grid">
       { ingredients
@@ -53,6 +49,11 @@ function IngredientsGrid() {
               <img
                 src={`https://www.themealdb.com/images/ingredients/${ingredient[0]}-Small.png`}
                 alt={ingredient[0]}
+                onError={({ currentTarget }) => {
+                  currentTarget.onerror = null; // prevents looping
+                  currentTarget.src =
+                    'https://www.themealdb.com/images/ingredients/ancho%20chillies-Small.png';
+                }}
               />
               <h3>{ingredient[0]}</h3>
             </Link>
@@ -66,6 +67,11 @@ function IngredientsGrid() {
               <img
                 src={`https://www.thecocktaildb.com/images/ingredients/${ingredient[0]}-Small.png`}
                 alt={ingredient[0]}
+                onError={({ currentTarget }) => {
+                  currentTarget.onerror = null; // prevents looping
+                  currentTarget.src =
+                    'https://www.themealdb.com/images/ingredients/bitters-Small.png';
+                }}
               />
               <h3>{ingredient[0]}</h3>
             </Link>

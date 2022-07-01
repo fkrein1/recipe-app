@@ -5,8 +5,9 @@ import './styles.scss';
 
 function RecipeGrid() {
   const { searchResults } = useContext(RecipesContext);
-  const location = useLocation();
+  const { pathname } = useLocation();
 
+  console.log(pathname)
   return (
     <main id="recipe-grid">
       {searchResults !== null &&
@@ -14,9 +15,9 @@ function RecipeGrid() {
           <Link
             key={index}
             to={
-              location.pathname.includes('nationalities')
+              pathname === '/'
                 ? `/foods/${recipe.idMeal}`
-                : `${location.pathname}/${recipe.idMeal || recipe.idDrink}`
+                : `${pathname}/${recipe.idMeal || recipe.idDrink}`
             }
           >
             <img
