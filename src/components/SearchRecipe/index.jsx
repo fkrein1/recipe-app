@@ -8,12 +8,12 @@ import './styles.scss';
 function SearchRecipe() {
   const [searchValue, setSearchValue] = useState('');
   const { setSearchResults, setFilter } = useContext(RecipesContext);
-  const location = useLocation();
+  const {pathname} = useLocation();
 
   const handleSearchApi = async () => {
     event.preventDefault();
     setFilter('');
-    if (location.pathname === '/foods') {
+    if (pathname === '/foods' || pathname === '/') {
       const apiResult = await foodApi('s', searchValue);
       if (!apiResult) {
         alert("Sorry, we haven't found any recipes for these filters.");
