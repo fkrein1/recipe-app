@@ -4,20 +4,13 @@ import { RecipesContext } from '../../context/RecipesContext';
 import './styles.scss';
 
 function RecipeGrid() {
-  const { searchResults, filteredResults } = useContext(RecipesContext);
+  const { searchResults } = useContext(RecipesContext);
   const location = useLocation();
-  let filteredRecipes = [];
-  const maxRecipes = 24;
-  if (filteredResults && filteredResults.length > 0) {
-    filteredRecipes = filteredResults.slice(0, maxRecipes);
-  } else if (searchResults.length > 0) {
-    filteredRecipes = searchResults.slice(0, maxRecipes);
-  }
 
   return (
     <main id="recipe-grid">
-      {filteredRecipes.length > 0 &&
-        filteredRecipes.map((recipe, index) => (
+      {searchResults !== null &&
+        searchResults.map((recipe, index) => (
           <Link
             key={index}
             to={
@@ -31,6 +24,7 @@ function RecipeGrid() {
               alt={recipe.strMeal || recipe.strDrink}
             />
             <h3>{recipe.strMeal || recipe.strDrink}</h3>
+            <p>{recipe.strCategory}</p>
           </Link>
         ))}
     </main>

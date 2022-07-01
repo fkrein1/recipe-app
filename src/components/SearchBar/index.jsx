@@ -7,11 +7,12 @@ import './styles.scss';
 
 function SearchBar() {
   const [searchValue, setSearchValue] = useState('');
-  const { setSearchResults } = useContext(RecipesContext);
+  const { setSearchResults, setFilter } = useContext(RecipesContext);
   const location = useLocation();
 
   const handleSearchApi = async () => {
     event.preventDefault();
+    setFilter('');
     if (location.pathname === '/foods') {
       const apiResult = await foodApi('s', searchValue);
       if (!apiResult) {

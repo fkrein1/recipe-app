@@ -1,29 +1,27 @@
 import React from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import FoodDetail from '../../components/FoodDetail';
 import DrinkDetail from '../../components/DrinkDetail';
-import DrinkRecomendation from '../../components/DrinkRecomendation';
-import FoodRecomendation from '../../components/FoodRecomendation';
+import Recomendation from '../../components/Recomendation';
 
 function Recipe() {
-  const { pathname } = useLocation();
+  const {pathname} = useLocation()
   const isDrink = pathname.includes('drinks');
   const isFood = pathname.includes('foods');
-  const id = pathname.split('/').pop();
-
+  const { id } = useParams();
 
   return (
     <div>
-      { isFood && (
+      {isFood && (
         <>
-          <FoodDetail id={ id } />
-          <DrinkRecomendation />
+          <FoodDetail id={id} />
+          <Recomendation />
         </>
       )}
       {isDrink && (
         <>
-          <DrinkDetail id={ id } />
-          <FoodRecomendation />
+          <DrinkDetail id={id} />
+          <Recomendation />
         </>
       )}
     </div>

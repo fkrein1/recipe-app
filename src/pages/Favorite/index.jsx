@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import UnfavoriteBtn from '../../components/UnfavoriteBtn';
 import './styles.scss';
 
-function FavoriteRecipes() {
+function Favorite() {
   const [favoriteRecipes, setFavoriteRecipes] = useState([]);
   const [recipesFilter, setRecipesFilter] = useState(favoriteRecipes);
-  const [copySucess, setCopySucess] = useState(false);
   const [reload, setReload] = useState(true);
 
   useEffect(() => {
@@ -19,27 +17,17 @@ function FavoriteRecipes() {
   return (
     <>
       <Header title="Favorites" />
-      <main>
+      <main id="favorite-recipes-grid">
         {recipesFilter &&
           recipesFilter.map((recipe, index) => (
-            <div key={index}>
+            <div key={index} className="favorite-recipes-card">
               <Link to={`/${recipe.type}s/${recipe.id}`}>
                 <img src={recipe.image} alt={recipe.name} />
               </Link>
               <Link to={`/${recipe.type}s/${recipe.id}`}>
-                <p>{recipe.name}</p>
+                <h3>{recipe.name}</h3>
+                <p>{recipe.category}</p>
               </Link>
-              {recipe.alcoholicOrNot.length !== 0 && (
-                <p>
-                  alcoholic or not:
-                  {recipe.alcoholicOrNot}
-                </p>
-              )}
-              <p>
-                {recipe.nationality !== '' && `${recipe.nationality} - `}
-                {recipe.category}
-              </p>
-              <UnfavoriteBtn id={recipe.id} reload={setReload} index={index} />
             </div>
           ))}
       </main>
@@ -48,4 +36,4 @@ function FavoriteRecipes() {
   );
 }
 
-export default FavoriteRecipes;
+export default Favorite;

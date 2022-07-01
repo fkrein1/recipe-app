@@ -4,19 +4,17 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import './styles.scss';
 
-function DoneRecipes() {
+function Finished() {
   const [doneRecipes, setDoneRecipes] = useState([]);
   const [recipesFilted, setRecipesFilter] = useState(doneRecipes);
-  const [copySucess, setCopySucess] = useState(false);
   useEffect(() => {
     setDoneRecipes(JSON.parse(localStorage.getItem('doneRecipes')));
     setRecipesFilter(JSON.parse(localStorage.getItem('doneRecipes')));
   }, []);
 
-
   return (
     <>
-      <Header title="Done Recipes" />
+      <Header title="Finished" />
       <main id="done-recipes-grid">
         {recipesFilted &&
           recipesFilted.map((recipe, index) => (
@@ -27,14 +25,7 @@ function DoneRecipes() {
               <Link to={`/${recipe.type}s/${recipe.id}`}>
                 <h3>{recipe.name}</h3>
               </Link>
-              {recipe.alcoholicOrNot.length !== 0 && (
-                <p>{recipe.alcoholicOrNot}</p>
-              )}
-              <p>
-                {recipe.nationality ? `${recipe.nationality} - ` : ''}
-                {recipe.category}
-              </p>
-
+              <p>{recipe.category}</p>
             </div>
           ))}
       </main>
@@ -43,4 +34,4 @@ function DoneRecipes() {
   );
 }
 
-export default DoneRecipes;
+export default Finished;

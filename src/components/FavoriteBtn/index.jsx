@@ -48,7 +48,7 @@ function FavoriteBtn({ recipe }) {
           type="button"
           onClick={ addFavorite }
         >
-          <Heart size={ 40 } color="#7A7AC7" alt="blanck heart icon" />
+          <Heart size={ 35 } color="#7A7AC7" alt="blanck heart icon" />
         </button>
       )}
 
@@ -57,7 +57,7 @@ function FavoriteBtn({ recipe }) {
           type="button"
           onClick={ deleteFavorite }
         >
-          <Heart size={ 40 } color="#7A7AC7" weight="fill" alt="purple heart icon" />
+          <Heart size={ 35 } color="#7A7AC7" weight="fill" alt="purple heart icon" />
 
         </button>
       )}

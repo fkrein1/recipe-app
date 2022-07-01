@@ -8,10 +8,11 @@ import { useLocation, useParams } from 'react-router-dom';
 import SearchBar from '../../components/SearchBar';
 
 function Drinks() {
-  const { setSearchResults } = useContext(RecipesContext);
+  const { setSearchResults, filter } = useContext(RecipesContext);
   useEffect(() => {
     async function fetchRecipes() {
-      setSearchResults(await drinkApi('s', ''));
+      if (filter === '') setSearchResults(await drinkApi('s', '')); 
+      else setSearchResults(await drinkApi('i', filter)); 
     }
     fetchRecipes();
   }, []);

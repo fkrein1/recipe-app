@@ -4,13 +4,13 @@ export const RecipesContext = createContext();
 
 export function RecipesProvider({ children }) {
   const [searchResults, setSearchResults] = useState([]);
-  const [filteredResults, setFilteredResults] = useState([]);
+  const [filter, setFilter] = useState('');
 
   const context = {
     setSearchResults,
     searchResults,
-    setFilteredResults,
-    filteredResults,
+    filter,
+    setFilter,
   };
 
   return (

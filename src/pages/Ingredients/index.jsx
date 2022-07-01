@@ -6,7 +6,7 @@ import IngredientsGrid from '../../components/IngredientsGrid';
 export default function Ingredients() {
   return (
     <>
-      <Header title="Explore" />
+      <Header title="Ingredients" />
       <IngredientsGrid />
       <Footer />
     </>

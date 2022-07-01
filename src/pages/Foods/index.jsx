@@ -8,10 +8,11 @@ import SearchBar from '../../components/SearchBar';
 import './styles.scss';
 
 function Foods() {
-  const { setSearchResults } = useContext(RecipesContext);
+  const { setSearchResults, filter } = useContext(RecipesContext);
   useEffect(() => {
     async function fetchRecipes() {
-      setSearchResults(await foodApi('s', ''));
+      if (filter === '') setSearchResults(await foodApi('s', ''));
+      else setSearchResults(await foodApi('i', filter));
     }
     fetchRecipes();
   }, []);

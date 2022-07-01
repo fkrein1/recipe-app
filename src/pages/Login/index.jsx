@@ -5,15 +5,11 @@ import './styles.scss';
 
 function Login() {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
   const regex = /\S+@\S+\.\S+/;
-  const minPassword = 6;
 
   function btnSubmit() {
-    localStorage.setItem('mealsToken', '1');
-    localStorage.setItem('cocktailsToken', '1');
     localStorage.setItem('user', JSON.stringify({ email }));
     navigate('/foods');
   }
