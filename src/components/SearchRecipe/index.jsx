@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { MagnifyingGlass, X } from 'phosphor-react';
-import { foodApi, drinkApi } from '../../services/foodAndDrinkApi';
+import { fetchDrinkByName } from '../../services/drinkApi';
+import { fetchFoodByName } from '../../services/foodApi';
 import { RecipesContext } from '../../context/RecipesContext';
 import './styles.scss';
 
@@ -14,7 +15,7 @@ function SearchRecipe() {
     event.preventDefault();
     setFilter('');
     if (pathname === '/foods' || pathname === '/') {
-      const apiResult = await foodApi('s', searchValue);
+      const apiResult = await fetchFoodByName(searchValue);
       if (!apiResult) {
         alert("Sorry, we haven't found any recipes for these filters.");
         setSearchResults([]);
@@ -22,7 +23,7 @@ function SearchRecipe() {
         setSearchResults(apiResult);
       }
     } else {
-      const apiResult = await drinkApi('s', searchValue);
+      const apiResult = await fetchDrinkByName(searchValue);
       if (!apiResult) {
         alert("Sorry, we haven't found any recipes for these filters.");
         setSearchResults([]);

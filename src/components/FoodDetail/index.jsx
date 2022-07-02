@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { fetchFoodById } from '../../services/foodApi';
 import ShareButton from '../ShareBtn';
 import FavoriteBtn from '../FavoriteBtn';
 import './styles.scss';
@@ -11,11 +12,8 @@ function FoodDetail({ id }) {
 
   useEffect(() => {
     const getFood = async () => {
-      const apiData = await fetch(
-        `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`,
-      );
-      const apiFood = await apiData.json();
-      setFoods(apiFood.meals);
+      const foodDetail = await fetchFoodById(id)
+      setFoods(foodDetail);
     };
     getFood();
   }, [id]);

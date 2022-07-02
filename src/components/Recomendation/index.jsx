@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { fetchDrinkByName } from '../../services/drinkApi';
 import { useLocation } from 'react-router-dom';
 import './styles.scss';
+import { fetchFoodByName } from '../../services/foodApi';
 
 function Recomendation() {
   const [recomendations, setRecomendations] = useState([]);
@@ -11,18 +13,12 @@ function Recomendation() {
   useEffect(() => {
     const getRecomendation = async () => {
       const sugestions = 6;
-      if (location.pathname.includes('foods')) {
-        const apiData = await fetch(
-          'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=',
-        );
-        const drinkRecipe = await apiData.json();
-        setRecomendations(drinkRecipe.drinks.slice(0, sugestions));
+      if (location.pathname.includes('drinks')) {
+        const drinkRecipe = await fetchDrinkByName('')
+        setRecomendations(drinkRecipe.slice(0, sugestions));
       } else {
-        const apiData = await fetch(
-          'https://www.themealdb.com/api/json/v1/1/search.php?s=',
-        );
-        const foodRecipe = await apiData.json();
-        setRecomendations(foodRecipe.meals.slice(0, sugestions));
+        const foodRecipe = await fetchFoodByName('')
+        setRecomendations(foodRecipe.slice(0, sugestions));
       }
     };
     getRecomendation();

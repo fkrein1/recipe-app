@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
+import { fetchDrinkById } from '../../services/drinkApi';
+import { fetchFoodById } from '../../services/foodApi';
 import FavoriteBtn from '../../components/FavoriteBtn';
 import ShareBtn from '../../components/ShareBtn';
 import './styles.scss';
@@ -38,20 +40,29 @@ function InProgress() {
 
   useEffect(() => {
     const getRecipe = async () => {
-      let apiData = '';
       if (location.pathname.includes('foods')) {
-        apiData = await fetch(
-          `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`,
-        );
-      } else {
-        apiData = await fetch(
-          `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`,
-        );
-      }
-      console.log(apiData);
-      const apiRecipe = await apiData.json();
-      const param = location.pathname.includes('foods') ? 'meals' : 'drinks';
-      setRecipe(...apiRecipe[param]);
+          const foodRecipe = await fetchFoodById(id)
+          setRecipe(...foodRecipe)
+        } else {
+          const drinkRecipe = await fetchDrinkById(id)
+          setRecipe(...drinkRecipe)
+        }
+
+
+
+      // let apiData = '';
+      // if (location.pathname.includes('foods')) {
+      //   apiData = await fetch(
+      //     `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`,
+      //   );
+      // } else {
+      //   apiData = await fetch(
+      //     `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`,
+      //   );
+      // }
+      // const apiRecipe = await apiData.json();
+      // const param = location.pathname.includes('foods') ? 'meals' : 'drinks';
+      // setRecipe(...apiRecipe[param]);
     };
     getRecipe();
   }, [id]);

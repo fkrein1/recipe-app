@@ -3,16 +3,15 @@ import Header from '../../components/Header';
 import RecipeGrid from '../../components/RecipeGrid';
 import Footer from '../../components/Footer';
 import { RecipesContext } from '../../context/RecipesContext';
-import { drinkApi } from '../../services/foodAndDrinkApi';
-import { useLocation, useParams } from 'react-router-dom';
+import { fetchDrinkByIngredient, fetchDrinkByName  } from '../../services/drinkApi';
 import SearchRecipe from '../../components/SearchRecipe';
 
 function Drinks() {
   const { setSearchResults, filter } = useContext(RecipesContext);
   useEffect(() => {
     async function fetchRecipes() {
-      if (filter === '') setSearchResults(await drinkApi('s', ''));
-      else setSearchResults(await drinkApi('i', filter));
+      if (filter === '') setSearchResults(await fetchDrinkByName(''));
+      else setSearchResults(await fetchDrinkByIngredient(filter));
     }
     fetchRecipes();
   }, []);

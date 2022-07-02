@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { fetchDrinkById } from '../../services/drinkApi';
 import ShareButton from '../ShareBtn';
 import FavoriteBtn from '../FavoriteBtn';
 import BackArrow from '../BackArrow';
@@ -11,11 +12,8 @@ function DrinkDetail({ id }) {
 
   useEffect(() => {
     const getDrink = async () => {
-      const apiData = await fetch(
-        `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`,
-      );
-      const apiDrink = await apiData.json();
-      setDrinks(apiDrink.drinks);
+      const drinkDetail = await fetchDrinkById(id);
+      setDrinks(drinkDetail);
     };
     getDrink();
   }, [id]);
