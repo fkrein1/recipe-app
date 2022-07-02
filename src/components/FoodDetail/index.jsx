@@ -12,7 +12,7 @@ function FoodDetail({ id }) {
 
   useEffect(() => {
     const getFood = async () => {
-      const foodDetail = await fetchFoodById(id)
+      const foodDetail = await fetchFoodById(id);
       setFoods(foodDetail);
     };
     getFood();
@@ -71,7 +71,7 @@ function FoodDetail({ id }) {
             />
             {foods.length > 0 && <FavoriteBtn recipe={foods[0]} />}
             <ShareButton />
-            <BackArrow />
+            <BackArrow pagesToGoBack={-1} />
           </div>
 
           <h1>{food.strMeal}</h1>

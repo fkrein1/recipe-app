@@ -7,7 +7,6 @@ function RecipeGrid() {
   const { searchResults } = useContext(RecipesContext);
   const { pathname } = useLocation();
 
-  console.log(pathname);
   return (
     <main id="recipe-grid">
       {searchResults !== null &&

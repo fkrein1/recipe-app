@@ -24,7 +24,6 @@ function Footer() {
   const ingredients = pathname.includes('/ingredients');
   const favorite = pathname.includes('/favorite');
   const finished = pathname.includes('/finished');
-  console.log();
 
   return (
     <footer id="footer">

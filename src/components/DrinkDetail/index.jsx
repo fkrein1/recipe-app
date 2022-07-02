@@ -71,7 +71,7 @@ function DrinkDetail({ id }) {
             />
             {drinks.length > 0 && <FavoriteBtn recipe={drinks[0]} />}
             <ShareButton />
-            <BackArrow />
+            <BackArrow pagesToGoBack={-1} />
           </div>
 
           <h1>{drink.strDrink}</h1>
